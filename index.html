@@ -11,11 +11,11 @@
 
 :root {
   --bg:      #090909;
-  --border:  #1c1c1c;
-  --border2: #282828;
-  --text:    #EDEAE4;
-  --muted:   #3e3e3e;
-  --muted2:  #5e5e5e;
+  --border:  #242424;
+  --border2: #333333;
+  --text:    #FFFFFF;
+  --muted:   #888888;
+  --muted2:  #BBBBBB;
   --accent:  #FFFFFF;
   --sidebar: 160px;
   --ease:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -78,7 +78,7 @@ body::after {
 .sidebar-top {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0rem;
 }
 
 .nav-item {
@@ -86,9 +86,9 @@ body::after {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted2);
+  color: #888888;
   text-decoration: none;
-  padding: 0.4rem 0;
+  padding: 0.35rem 0;
   position: relative;
   transition: color 0.25s;
   display: block;
@@ -116,7 +116,7 @@ body::after {
 .sidebar-socials {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.4rem;
 }
 
 .social-link {
@@ -124,7 +124,7 @@ body::after {
   font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #888888;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -623,6 +623,27 @@ main {
   color: var(--muted);
 }
 
+/* ── ABOUT SECTION ── */
+.about-section { border-top: 1px solid var(--border); }
+.about-body-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.about-body-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
+.about-body-right { padding: 4rem 3rem; }
+.about-long-bio p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--muted2); max-width: 480px; }
+.about-long-bio p + p { margin-top: 1.4rem; }
+.about-long-bio p strong { color: var(--text); font-weight: 400; }
+.about-personal { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.8rem; }
+.about-personal-item { display: flex; gap: 1.2rem; align-items: baseline; }
+.personal-key { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
+.personal-val { font-size: 0.88rem; font-weight: 300; color: var(--muted2); }
+.exp-timeline { display: flex; flex-direction: column; }
+.exp-item { padding: 2rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; }
+.exp-item:first-child { padding-top: 0; }
+.exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+.exp-years { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+.exp-role { font-family: 'Raleway', sans-serif; font-weight: 200; font-size: 1.1rem; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.2rem; }
+.exp-company { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.75rem; }
+.exp-outcome { font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--muted2); }
+
 /* ── REVEAL ANIMATION ── */
 .reveal {
   opacity: 0;
@@ -739,7 +760,6 @@ footer {
     <a href="#work" class="nav-item">Works</a>
     <a href="#about" class="nav-item">About</a>
   </div>
-  <div class="sidebar-socials">
     <a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank" class="social-link">Li</a>
     <a href="https://github.com/marshdogg" target="_blank" class="social-link">Gh</a>
     <a href="mailto:marshall.behrns@gmail.com" class="social-link">Em</a>
@@ -933,6 +953,106 @@ footer {
       </a>
 
     </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+
+    <div class="section-head reveal">
+      <div class="section-label-row">
+        <span class="section-num">003</span>
+        <h2 class="section-title">About</h2>
+      </div>
+    </div>
+
+    <div class="about-body-grid">
+
+      <div class="about-body-left reveal">
+        <div class="about-long-bio">
+          <p>I've spent <strong>15 years building products at the edge of where industries get disrupted</strong> — microfinance in Nicaragua, lottery innovation at BCLC, revenue infrastructure at Clearco, and now franchise operations at WOW 1 DAY PAINTING.</p>
+          <p>My work tends to show up in the numbers: <strong>$100M+ GMV at Clearco</strong>, 16% retention lift, 20% default reduction, TAM expanded 10X through a banking integration I led end-to-end.</p>
+          <p>What I care about is the thinking behind the build — clear problem framing, tight OKRs, and products that make the business measurably better. I've led teams, scaled functions from zero, and shipped everything from fintech risk models to the world's first distributed wine cellar trading platform.</p>
+          <p>Right now I'm deep in agentic AI development, <strong>building WOW OS with a Claude Code pipeline I architected myself.</strong></p>
+        </div>
+
+        <div class="about-personal">
+          <div class="about-personal-item">
+            <span class="personal-key">Based</span>
+            <span class="personal-val">Vancouver, BC — 49.2827° N</span>
+          </div>
+          <div class="about-personal-item">
+            <span class="personal-key">Cycling</span>
+            <span class="personal-val">Whistler Gran Fondo, Okanagan, Fraser Valley</span>
+          </div>
+          <div class="about-personal-item">
+            <span class="personal-key">Wine</span>
+            <span class="personal-val">WSET Level 1 Sommelier</span>
+          </div>
+          <div class="about-personal-item">
+            <span class="personal-key">Education</span>
+            <span class="personal-val">BBA Finance, Regina · UBC Sauder Executive Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-body-right reveal">
+        <div class="about-label" style="margin-bottom:2.5rem;">
+          <span class="about-label-text">Experience</span>
+          <span class="about-label-line"></span>
+        </div>
+
+        <div class="exp-timeline">
+
+          <div class="exp-item">
+            <span class="exp-years">2024<br>Ongoing</span>
+            <div class="exp-content">
+              <div class="exp-role">Director, Product & Technology</div>
+              <div class="exp-company">WOW 1 DAY PAINTING</div>
+              <p class="exp-outcome">Building WOW OS — a proprietary franchise management platform replacing Salesforce and PaintScout across 50+ locations. Architected an agentic AI development pipeline using Claude Code.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <span class="exp-years">2021<br>2024</span>
+            <div class="exp-content">
+              <div class="exp-role">Senior Staff Product Manager</div>
+              <div class="exp-company">CLEARCO</div>
+              <p class="exp-outcome">Led Invoice Funding product — $100M+ GMV growth, $4M+ revenue unlocked, 16% retention lift, 20% default reduction. Established the Data Products function (Risk, Forecasting & Underwriting) from zero.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <span class="exp-years">2023<br>2024</span>
+            <div class="exp-content">
+              <div class="exp-role">Head of Product</div>
+              <div class="exp-company">GENESIS LIBATIONS</div>
+              <p class="exp-outcome">Built the world's first distributed wine cellar and trading platform — payments, marketplace, onboarding, and beta launch end-to-end.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <span class="exp-years">2016<br>2021</span>
+            <div class="exp-content">
+              <div class="exp-role">Senior Manager, Innovation</div>
+              <div class="exp-company">BCLC</div>
+              <p class="exp-outcome">Founding member of the Innovation team. Launched Discovery & Delivery framework, GEO Vancouver App, and Innovation as a Service across a $3B+ Crown corporation.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <span class="exp-years">2008<br>2016</span>
+            <div class="exp-content">
+              <div class="exp-role">Business Consultant & Appraiser</div>
+              <div class="exp-company">BC ASSESSMENT</div>
+              <p class="exp-outcome">Key member of the Product Division launch team. Built the corporate innovation framework and competed directly with MLS on property data products.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
   </section>
 
   <footer>
