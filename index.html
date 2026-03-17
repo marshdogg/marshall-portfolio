@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marshall — Product Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #090909;
+  --border:  #1c1c1c;
+  --border2: #282828;
+  --text:    #EDEAE4;
+  --muted:   #3e3e3e;
+  --muted2:  #5e5e5e;
+  --accent:  #FFFFFF;
+  --sidebar: 160px;
+  --ease:    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── grain overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ── custom cursor ── */
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s;
+  mix-blend-mode: difference;
+}
+.cursor.expand {
+  width: 40px;
+  height: 40px;
+}
+
+/* ── LEFT SIDEBAR ── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 2rem;
+  z-index: 100;
+  background: var(--bg);
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  position: relative;
+  transition: color 0.25s;
+  display: block;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+.nav-item.active { color: var(--text); }
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+}
+.nav-item:not(.active):hover { color: var(--text); }
+
+.sidebar-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.social-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.social-link:hover { color: var(--text); }
+
+.sidebar-bottom {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  margin-left: var(--sidebar);
+}
+
+/* ── HERO / LANDING ── */
+.hero {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3.5rem 3.5rem 3.5rem 3rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.hero-name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  font-size: clamp(4.5rem, 10vw, 9.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s var(--ease) 0.3s forwards;
+}
+
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.7s forwards;
+}
+
+.hero-role-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 300;
+  color: var(--muted2);
+  letter-spacing: 0.02em;
+}
+
+.hero-role-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border2);
+}
+
+.hero-index {
+  position: absolute;
+  top: 2.5rem;
+  right: 3.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeIn 0.8s var(--ease) 1s forwards;
+}
+
+/* ── HERO RIGHT (About) ── */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.5rem 3rem;
+  opacity: 0;
+  animation: fadeIn 1s var(--ease) 0.6s forwards;
+}
+
+.about-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.about-label-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  white-space: nowrap;
+}
+
+.about-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.about-bio {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted2);
+}
+
+.about-bio p + p { margin-top: 1.2rem; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.about-stat {
+  padding: 0 1.5rem 0 0;
+  border-right: 1px solid var(--border);
+}
+.about-stat:nth-child(even) {
+  padding: 0 0 0 1.5rem;
+  border-right: none;
+}
+.about-stat + .about-stat:nth-child(3) { margin-top: 1.5rem; }
+
+.about-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+}
+
+.about-stat-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.25s;
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+}
+.btn-primary:hover { background: transparent; color: var(--text); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--muted2);
+  border: 1px solid var(--border2);
+}
+.btn-outline:hover { border-color: var(--muted2); color: var(--text); }
+
+.hero-location {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.hero-location span { color: var(--muted2); }
+
+/* ── SECTION HEADER ── */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+}
+
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid transparent;
+  color: var(--muted2);
+  background: transparent;
+  cursor: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.tab:hover { color: var(--text); border-color: var(--border2); }
+.tab.active { color: var(--text); border-color: var(--border2); background: #141414; }
+
+/* ── FEATURED PROJECT ── */
+.featured-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+
+.featured-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.featured-img-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s var(--ease);
+}
+.featured-project:hover .featured-img-inner { transform: scale(1.04); }
+
+.img-ph {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+}
+.img-ph-grid {
+  background: #0e0e0e;
+}
+.img-ph-grid::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 48px, var(--border) 48px, var(--border) 49px),
+    repeating-linear-gradient(90deg, transparent, transparent 48px, var(--border) 48px, var(--border) 49px);
+}
+.img-ph-rings {
+  background: #0d0d0d;
+}
+.img-ph-rings::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; height: 60%;
+  border: 1px solid var(--border2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 24px var(--bg), 0 0 0 25px var(--border);
+}
+.img-ph-hatch {
+  background: #0f0f0f;
+}
+.img-ph-hatch::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 10px, var(--border) 10px, var(--border) 11px
+  );
+  opacity: 0.5;
+}
+.img-ph-dots {
+  background: #0c0c0c;
+}
+.img-ph-dots::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--border2) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.img-tag {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  background: rgba(9,9,9,0.9);
+  padding: 0.28rem 0.6rem;
+  border: 1px solid var(--border2);
+}
+
+.featured-info {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feat-cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 1rem;
+}
+
+.feat-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  transition: opacity 0.3s;
+}
+.featured-project:hover .feat-title { opacity: 0.7; }
+
+.feat-desc {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--muted2);
+  margin-top: 1.5rem;
+  max-width: 380px;
+}
+
+.feat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.feat-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.arrow-box {
+  width: 34px; height: 34px;
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--muted2);
+  transition: all 0.25s;
+}
+.featured-project:hover .arrow-box {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+/* ── WORK GRID ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.work-card {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+  overflow: hidden;
+}
+.work-card:nth-child(3n) { border-right: none; }
+
+.card-img {
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  position: relative;
+}
+.card-img-inner {
+  width: 100%; height: 100%;
+  transition: transform 0.7s var(--ease);
+}
+.work-card:hover .card-img-inner { transform: scale(1.05); }
+
+.card-overlay {
+  position: absolute; inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9,9,9,0);
+  transition: background 0.4s;
+}
+.work-card:hover .card-overlay { background: rgba(9,9,9,0.5); }
+
+.card-arrow {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.4s var(--ease);
+}
+.work-card:hover .card-arrow { opacity: 1; transform: scale(1); }
+
+.card-info {
+  padding: 1.4rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.card-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.2;
+  transition: opacity 0.2s;
+}
+.work-card:hover .card-title { opacity: 0.6; }
+
+.card-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text); }
+
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  :root { --sidebar: 130px; }
+  .hero { grid-template-columns: 1fr 360px; }
+  .hero-name { font-size: clamp(3.5rem, 9vw, 7rem); }
+}
+
+@media (max-width: 768px) {
+  :root { --sidebar: 0px; }
+  .sidebar {
+    position: fixed;
+    bottom: 0; top: auto;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    z-index: 200;
+  }
+  .sidebar-top { flex-direction: row; gap: 1.5rem; }
+  .nav-item::before { display: none; }
+  .sidebar-socials { flex-direction: row; gap: 1rem; }
+  .sidebar-bottom { display: none; }
+  main { margin-left: 0; }
+  .hero { grid-template-columns: 1fr; height: auto; }
+  .hero-left { padding: 6rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-right { padding: 3rem 2rem; }
+  .work-grid { grid-template-columns: 1fr 1fr; }
+  .work-card:nth-child(3n) { border-right: 1px solid var(--border); }
+  .work-card:nth-child(2n) { border-right: none; }
+  .featured-project { grid-template-columns: 1fr; }
+  .featured-img { border-right: none; border-bottom: 1px solid var(--border); }
+  .section-head, footer { padding: 1.5rem; }
+  body { cursor: auto; }
+  .cursor { display: none; }
+  .tab { cursor: pointer; }
+  .work-card, .featured-project { cursor: pointer; }
+}
+
+@media (max-width: 480px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card { border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- SIDEBAR NAV -->
+<nav class="sidebar">
+  <div class="sidebar-top">
+    <a href="#" class="nav-item active">Home</a>
+    <a href="#work" class="nav-item">Works</a>
+    <a href="#about" class="nav-item">About</a>
+  </div>
+  <div class="sidebar-socials">
+    <a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank" class="social-link">Li</a>
+    <a href="https://github.com/marshdogg" target="_blank" class="social-link">Gh</a>
+    <a href="mailto:marshall.behrns@gmail.com" class="social-link">Em</a>
+  </div>
+  <div class="sidebar-bottom">
+    © 2026<br>Marshall
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-left">
+      <span class="hero-index">001 / HOME</span>
+
+      <h1 class="hero-name">
+        Marshall<br>Behrns
+      </h1>
+
+      <div class="hero-role">
+        <span class="hero-role-text">I build the systems that scale the business — from 0 to $100M+.</span>
+        <span class="hero-role-line"></span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div>
+        <div class="about-label">
+          <span class="about-label-text">About</span>
+          <span class="about-label-line"></span>
+        </div>
+
+        <p class="about-bio">
+          15+ years building products at the edge of where industries get disrupted — microfinance, lottery innovation, FinTech, and now franchise tech.
+        </p>
+        <p class="about-bio" style="margin-top: 1rem;">
+          I'm comfortable moving between strategy decks and terminal windows. Most effective when those two things are the same conversation.
+        </p>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="about-stat-val">15+</span>
+            <span class="about-stat-key">Yrs Experience</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-val">$100M+</span>
+            <span class="about-stat-key">GMV Impact</span>
+          </div>
+          <div class="about-stat" style="margin-top:1.5rem;">
+            <span class="about-stat-val">$10M+</span>
+            <span class="about-stat-key">Revenue Unlocked</span>
+          </div>
+          <div class="about-stat" style="margin-top:1.5rem;">
+            <span class="about-stat-val">0→1</span>
+            <span class="about-stat-key">Products Shipped</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary">
+            Book a Call
+            <span>↗</span>
+          </a>
+          <a href="mailto:marshall.behrns@gmail.com" class="btn btn-outline">
+            Email Me
+            <span>→</span>
+          </a>
+        </div>
+        <div class="hero-location">
+          ⊕ 49.2827° N, 123.1207° W — <span>Vancouver, BC</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+
+    <div class="section-head reveal">
+      <div class="section-label-row">
+        <span class="section-num">002</span>
+        <h2 class="section-title">Selected Work</h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="platform">Platform</button>
+        <button class="tab" data-filter="crm">CRM</button>
+        <button class="tab" data-filter="strategy">Strategy</button>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <a href="#" class="featured-project reveal" data-cat="platform">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <div class="img-ph img-ph-grid" style="height:100%;"></div>
+        </div>
+        <span class="img-tag">Featured</span>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Platform · Franchise Tech · 0→1</p>
+          <h3 class="feat-title">WOW OS —<br>Franchise Management<br>Platform</h3>
+          <p class="feat-desc">A proprietary operating system replacing Salesforce and PaintScout across 50+ franchise locations. Built with an agentic AI development pipeline.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2024 — Ongoing</span>
+          <span class="arrow-box">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Grid -->
+    <div class="work-grid">
+
+      <a href="#" class="work-card reveal" data-cat="crm">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">CRM · Field Ops</span>
+          <span class="card-title">Shack Shine CRM Mind Meld</span>
+          <span class="card-year">2024</span>
+        </div>
+      </a>
+
+      <a href="#" class="work-card reveal" data-cat="strategy">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">Product Strategy</span>
+          <span class="card-title">2026–28 Technology Roadmap</span>
+          <span class="card-year">2025</span>
+        </div>
+      </a>
+
+      <a href="#" class="work-card reveal" data-cat="platform">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-dots" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">Self-Service · CX</span>
+          <span class="card-title">Cancel &amp; Reschedule Pilot</span>
+          <span class="card-year">2024</span>
+        </div>
+      </a>
+
+      <a href="#" class="work-card reveal" data-cat="strategy">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-grid" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">Brand · Segmentation</span>
+          <span class="card-title">Efficient Refresher Persona Framework</span>
+          <span class="card-year">2024</span>
+        </div>
+      </a>
+
+      <a href="#" class="work-card reveal" data-cat="platform">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">AI · Agentic Systems</span>
+          <span class="card-title">PRD Agent Pipeline</span>
+          <span class="card-year">2025</span>
+        </div>
+      </a>
+
+      <a href="#" class="work-card reveal" data-cat="crm">
+        <div class="card-img">
+          <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
+          <div class="card-overlay"><div class="card-arrow">→</div></div>
+        </div>
+        <div class="card-info">
+          <span class="card-cat">Scheduling · Dispatch</span>
+          <span class="card-title">Scheduling &amp; Dispatch System</span>
+          <span class="card-year">2024</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Marshall</span>
+    <ul class="footer-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com/marshdogg" target="_blank">GitHub</a></li>
+      <li><a href="mailto:marshall.behrns@gmail.com">Email</a></li>
+    </ul>
+    <span class="footer-copy">© 2026</span>
+  </footer>
+
+</main>
+
+<script>
+/* cursor */
+const cursor = document.getElementById('cursor');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animateCursor() {
+  cx += (mx - cx) * 0.15;
+  cy += (my - cy) * 0.15;
+  cursor.style.left = cx + 'px';
+  cursor.style.top  = cy + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+document.querySelectorAll('a, button, .work-card, .featured-project').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+});
+
+/* scroll reveal */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* filter */
+const tabs = document.querySelectorAll('.tab');
+const cards = document.querySelectorAll('[data-cat]');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.filter;
+    cards.forEach(c => { c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none'; });
+  });
+});
+
+/* active nav on scroll */
+const sections = { work: document.getElementById('work') };
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (sections.work && scrollY >= sections.work.offsetTop - 100) {
+    document.querySelector('.nav-item[href="#work"]').classList.add('active');
+  } else {
+    document.querySelector('.nav-item.active') || document.querySelector('.nav-item:first-child').classList.add('active');
+  }
+});
+</script>
+
+</body>
+</html>
