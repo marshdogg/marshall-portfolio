@@ -635,6 +635,74 @@ main {
   color: var(--muted);
 }
 
+/* ── BUILD SECTION ── */
+.build-section { border-top: 1px solid var(--border); }
+.build-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.build-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
+.build-right { padding: 4rem 3rem; display: flex; flex-direction: column; gap: 0; }
+.build-intro { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--muted2); max-width: 480px; }
+.build-intro + .build-intro { margin-top: 1.4rem; }
+.build-intro strong { color: var(--text); font-weight: 400; }
+.build-headline {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+.pipeline-list { display: flex; flex-direction: column; }
+.pipeline-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 1.2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.pipeline-item:last-child { border-bottom: none; }
+.pipeline-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+}
+.pipeline-content {}
+.pipeline-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.pipeline-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted2);
+}
+.build-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  border-radius: 2px;
+  margin-top: 0.6rem;
+}
+@media (max-width: 768px) {
+  .build-grid { grid-template-columns: 1fr; }
+  .build-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+  .build-right { padding: 3rem 1.5rem; }
+}
+
 /* ── ABOUT SECTION ── */
 .about-section { border-top: 1px solid var(--border); }
 .about-body-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
@@ -770,6 +838,7 @@ footer {
   <div class="sidebar-top">
     <a href="#" class="nav-item active">Home</a>
     <a href="#work" class="nav-item">Works</a>
+    <a href="#build" class="nav-item">Build</a>
     <a href="#about" class="nav-item">About</a>
   </div>
   <div class="sidebar-mid">
@@ -812,6 +881,9 @@ footer {
         </p>
         <p class="about-bio" style="margin-top: 1rem;">
           I'm comfortable moving between strategy decks and terminal windows. Most effective when those two things are the same conversation.
+        </p>
+        <p class="about-bio" style="margin-top: 1rem;">
+          Right now I'm deep in agentic AI development — building WOW OS with a Claude Code pipeline I architected myself.
         </p>
 
         <div class="about-stats">
@@ -881,7 +953,7 @@ footer {
         <div>
           <p class="feat-cat">Platform · Franchise Tech · 0→1</p>
           <h3 class="feat-title">WOW OS —<br>Franchise Management<br>Platform</h3>
-          <p class="feat-desc">A proprietary operating system replacing Salesforce and PaintScout across 50+ franchise locations. Built with an agentic AI development pipeline.</p>
+          <p class="feat-desc">A proprietary franchise management platform that replaces Salesforce and consolidates every operational tool into a single system across 50+ locations. Architected using an agentic AI development pipeline built on Claude Code.</p>
         </div>
         <div class="feat-footer">
           <span class="feat-year">2024 — Ongoing</span>
@@ -968,12 +1040,102 @@ footer {
     </div>
   </section>
 
+  <!-- HOW I BUILD -->
+  <section id="build" class="build-section">
+
+    <div class="section-head reveal">
+      <div class="section-label-row">
+        <span class="section-num">003</span>
+        <h2 class="section-title">How I Build</h2>
+      </div>
+    </div>
+
+    <div class="build-grid">
+
+      <div class="build-left reveal">
+        <span class="section-num">The Framework</span>
+        <h3 class="build-headline">A full agentic SDLC —<br>not a shortcut,<br>a system.</h3>
+        <p class="build-intro">
+          Most teams use AI to write faster. I built something different — a <strong>multi-agent development system</strong> where every stage of the software lifecycle is owned by a purpose-built agent grounded in real business context.
+        </p>
+        <p class="build-intro" style="margin-top:1.4rem;">
+          The system covers the full stack: product requirements, UX and UI design, frontend and backend implementation, security review, QA, DevOps, finance logic, and legal compliance. <strong>Each agent reads the actual business documents</strong> for WOW OS — PRDs, specs, department context — before producing output.
+        </p>
+        <p class="build-intro" style="margin-top:1.4rem;">
+          The result is a living, compounding system. Specs stay in sync with code. Every change is proposed, reviewed, built, verified, and archived — with full traceability. <strong>This is how a solo product leader ships at team velocity.</strong>
+        </p>
+        <div style="margin-top:2rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <span class="build-tag">Claude Code</span>
+          <span class="build-tag">Multi-Agent</span>
+          <span class="build-tag">GitHub</span>
+          <span class="build-tag">Living Specs</span>
+          <span class="build-tag">Agentic SDLC</span>
+          <span class="build-tag">Next.js</span>
+          <span class="build-tag">NestJS</span>
+          <span class="build-tag">AWS</span>
+        </div>
+      </div>
+
+      <div class="build-right reveal">
+        <div class="about-label" style="margin-bottom:2.5rem;">
+          <span class="about-label-text">Change Lifecycle</span>
+          <span class="about-label-line"></span>
+        </div>
+        <div class="pipeline-list">
+
+          <div class="pipeline-item">
+            <span class="pipeline-num">01</span>
+            <div class="pipeline-content">
+              <div class="pipeline-role">Propose</div>
+              <p class="pipeline-desc">Any idea or PRD is turned into a structured change proposal with delta specs — describing exactly what gets added, modified, or removed. Business context docs are read automatically before anything is written.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-item">
+            <span class="pipeline-num">02</span>
+            <div class="pipeline-content">
+              <div class="pipeline-role">Review & Design</div>
+              <p class="pipeline-desc">Specialist agents — covering Product, UX, UI, Technology, Sales, Operations, and Franchise Development — each review the proposal through their own business lens, producing GO / CONDITIONAL GO / NO-GO assessments before a line of code is touched.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-item">
+            <span class="pipeline-num">03</span>
+            <div class="pipeline-content">
+              <div class="pipeline-role">Build</div>
+              <p class="pipeline-desc">Frontend, backend, security, QA, and DevOps agents execute against the approved spec — each scoped to their domain. A gap analysis agent audits mockups against PRDs in parallel, catching coverage issues before implementation.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-item">
+            <span class="pipeline-num">04</span>
+            <div class="pipeline-content">
+              <div class="pipeline-role">Verify & Archive</div>
+              <p class="pipeline-desc">Every shipped change is validated for completeness, correctness, and coherence against the delta spec. Once verified, living specs are updated automatically — keeping documentation in sync with the codebase at all times.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-item">
+            <span class="pipeline-num">—</span>
+            <div class="pipeline-content">
+              <div class="pipeline-role">10+ Specialist Agents</div>
+              <p class="pipeline-desc">Product · UX · UI · Frontend · Backend · Security · QA · DevOps · Finance · Legal — each grounded in WOW OS business context, each with a defined output format, each compounding with every feature shipped.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
   <!-- ABOUT -->
   <section id="about" class="about-section">
 
     <div class="section-head reveal">
       <div class="section-label-row">
-        <span class="section-num">003</span>
+        <span class="section-num">004</span>
         <h2 class="section-title">About</h2>
       </div>
     </div>
@@ -1021,7 +1183,7 @@ footer {
             <div class="exp-content">
               <div class="exp-role">Director, Product & Technology</div>
               <div class="exp-company">WOW 1 DAY PAINTING</div>
-              <p class="exp-outcome">Building WOW OS — a proprietary franchise management platform replacing Salesforce and PaintScout across 50+ locations. Architected an agentic AI development pipeline using Claude Code.</p>
+              <p class="exp-outcome">Building WOW OS — a proprietary franchise management platform that replaces Salesforce and consolidates every operational tool into a single system across 50+ locations. Architected using an agentic AI development pipeline built on Claude Code.</p>
             </div>
           </div>
 
