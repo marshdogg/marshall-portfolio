@@ -10,13 +10,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #090909;
-  --border:  #242424;
-  --border2: #333333;
-  --text:    #FFFFFF;
-  --muted:   #888888;
-  --muted2:  #BBBBBB;
-  --accent:  #FFFFFF;
+  --bg:      oklch(6% 0.008 250);
+  --border:  oklch(17% 0.006 250);
+  --border2: oklch(23% 0.006 250);
+  --text:    oklch(98% 0.005 250);
+  --muted:   oklch(58% 0.008 250);
+  --muted2:  oklch(78% 0.008 250);
+  --accent:  oklch(98% 0.005 250);
   --sidebar: 160px;
   --ease:    cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -27,10 +27,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   min-height: 100vh;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* ── grain overlay ── */
@@ -94,11 +93,11 @@ body::after {
 }
 
 .nav-item {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #888888;
+  color: var(--muted);
   text-decoration: none;
   padding: 0.35rem 0;
   position: relative;
@@ -132,19 +131,19 @@ body::after {
 }
 
 .social-link {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #888888;
+  color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
 }
 .social-link:hover { color: var(--text); }
 
 .sidebar-bottom {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.55rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--muted);
   line-height: 1.8;
@@ -213,8 +212,8 @@ main {
   position: absolute;
   top: 2.5rem;
   right: 3.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.18em;
   color: var(--muted);
   opacity: 0;
@@ -239,8 +238,8 @@ main {
 }
 
 .about-label-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted2);
@@ -291,8 +290,8 @@ main {
 }
 
 .about-stat-key {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted2);
@@ -312,8 +311,8 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1.1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
@@ -336,8 +335,8 @@ main {
 .btn-outline:hover { border-color: var(--muted2); color: var(--text); }
 
 .hero-location {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--muted);
   margin-top: 2rem;
@@ -363,7 +362,7 @@ main {
 
 .section-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.16em;
   color: var(--muted);
 }
@@ -382,20 +381,20 @@ main {
 }
 
 .tab {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.4rem 0.9rem;
   border: 1px solid transparent;
   color: var(--muted2);
   background: transparent;
-  cursor: none;
   border-radius: 2px;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .tab:hover { color: var(--text); border-color: var(--border2); }
-.tab.active { color: var(--text); border-color: var(--border2); background: #141414; }
+.tab.active { color: var(--text); border-color: var(--border2); background: oklch(10% 0.006 250); }
 
 /* ── FEATURED PROJECT ── */
 .featured-project {
@@ -404,7 +403,7 @@ main {
   border-bottom: 1px solid var(--border);
   text-decoration: none;
   color: inherit;
-  cursor: none;
+  cursor: pointer;
 }
 
 .featured-img {
@@ -428,7 +427,7 @@ main {
   position: relative; overflow: hidden;
 }
 .img-ph-grid {
-  background: #0e0e0e;
+  background: oklch(8% 0.006 250);
 }
 .img-ph-grid::before {
   content: '';
@@ -438,7 +437,7 @@ main {
     repeating-linear-gradient(90deg, transparent, transparent 48px, var(--border) 48px, var(--border) 49px);
 }
 .img-ph-rings {
-  background: #0d0d0d;
+  background: oklch(7.5% 0.006 250);
 }
 .img-ph-rings::before {
   content: '';
@@ -450,7 +449,7 @@ main {
   box-shadow: 0 0 0 24px var(--bg), 0 0 0 25px var(--border);
 }
 .img-ph-hatch {
-  background: #0f0f0f;
+  background: oklch(8.5% 0.006 250);
 }
 .img-ph-hatch::before {
   content: '';
@@ -461,7 +460,7 @@ main {
   opacity: 0.5;
 }
 .img-ph-dots {
-  background: #0c0c0c;
+  background: oklch(7% 0.006 250);
 }
 .img-ph-dots::before {
   content: '';
@@ -473,12 +472,12 @@ main {
 .img-tag {
   position: absolute;
   top: 1rem; left: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted2);
-  background: rgba(9,9,9,0.9);
+  background: oklch(6% 0.008 250 / 0.9);
   padding: 0.28rem 0.6rem;
   border: 1px solid var(--border2);
 }
@@ -491,8 +490,8 @@ main {
 }
 
 .feat-cat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted2);
@@ -529,8 +528,8 @@ main {
 }
 
 .feat-year {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   color: var(--muted);
 }
@@ -562,7 +561,7 @@ main {
   border-bottom: 1px solid var(--border);
   text-decoration: none;
   color: inherit;
-  cursor: none;
+  cursor: pointer;
   overflow: hidden;
 }
 .work-card:nth-child(3n) { border-right: none; }
@@ -583,19 +582,19 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(9,9,9,0);
+  background: oklch(6% 0.008 250 / 0);
   transition: background 0.4s;
 }
-.work-card:hover .card-overlay { background: rgba(9,9,9,0.5); }
+.work-card:hover .card-overlay { background: oklch(6% 0.008 250 / 0.5); }
 
 .card-arrow {
   width: 40px; height: 40px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid oklch(98% 0.005 250 / 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.8);
+  color: oklch(98% 0.005 250 / 0.8);
   font-size: 0.9rem;
   opacity: 0;
   transform: scale(0.7);
@@ -612,8 +611,8 @@ main {
 }
 
 .card-cat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.56rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted2);
@@ -631,8 +630,8 @@ main {
 .work-card:hover .card-title { opacity: 0.6; }
 
 .card-year {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.56rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--muted);
 }
@@ -667,7 +666,7 @@ main {
 .pipeline-item:last-child { border-bottom: none; }
 .pipeline-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   color: var(--muted);
   padding-top: 0.2rem;
@@ -675,7 +674,7 @@ main {
 .pipeline-content {}
 .pipeline-role {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text);
@@ -690,7 +689,7 @@ main {
 .build-tag {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.3rem 0.7rem;
@@ -715,15 +714,15 @@ main {
 .about-long-bio p strong { color: var(--text); font-weight: 400; }
 .about-personal { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.8rem; }
 .about-personal-item { display: flex; gap: 1.2rem; align-items: baseline; }
-.personal-key { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
+.personal-key { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
 .personal-val { font-size: 0.88rem; font-weight: 300; color: var(--muted2); }
 .exp-timeline { display: flex; flex-direction: column; }
 .exp-item { padding: 2rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; }
 .exp-item:first-child { padding-top: 0; }
 .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
-.exp-years { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+.exp-years { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
 .exp-role { font-family: 'Raleway', sans-serif; font-weight: 200; font-size: 1.1rem; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.2rem; }
-.exp-company { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.75rem; }
+.exp-company { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.75rem; }
 .exp-outcome { font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--muted2); }
 
 /* ── REVEAL ANIMATION ── */
@@ -758,8 +757,8 @@ footer {
   gap: 2rem;
 }
 .footer-links a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
@@ -769,8 +768,8 @@ footer {
 .footer-links a:hover { color: var(--text); }
 
 .footer-copy {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--muted);
 }
@@ -819,15 +818,46 @@ footer {
   .featured-project { grid-template-columns: 1fr; }
   .featured-img { border-right: none; border-bottom: 1px solid var(--border); }
   .section-head, footer { padding: 1.5rem; }
-  body { cursor: auto; }
   .cursor { display: none; }
-  .tab { cursor: pointer; }
-  .work-card, .featured-project { cursor: pointer; }
+  .work-card:first-child { grid-column: span 1; }
+  .work-card:first-child .card-img { aspect-ratio: 3/2; }
 }
 
 @media (max-width: 480px) {
   .work-grid { grid-template-columns: 1fr; }
   .work-card { border-right: none; }
+  .work-card:first-child { grid-column: span 1; }
+  .work-card:first-child .card-img { aspect-ratio: 3/2; }
+}
+
+/* ── WORK CARD GRID VARIATION ── */
+.work-card:first-child {
+  grid-column: span 2;
+}
+.work-card:first-child .card-img {
+  aspect-ratio: 2/1;
+}
+
+/* ── FOCUS VISIBLE ── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--muted2);
+  outline-offset: 2px;
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-name, .hero-role, .hero-index, .hero-right {
+    animation: none;
+    opacity: 1;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .featured-img-inner, .card-img-inner {
+    transition: none;
+  }
 }
 </style>
 </head>
@@ -947,7 +977,7 @@ footer {
     <a href="#" class="featured-project reveal" data-cat="platform">
       <div class="featured-img">
         <div class="featured-img-inner">
-          <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:#0a0a0a;display:block;">
+          <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:oklch(6% 0.008 250);display:block;">
             <source src="wow-os-demo.mp4" type="video/mp4">
           </video>
         </div>
