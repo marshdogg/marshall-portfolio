@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>Marshall — Product Leader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <meta name="description" content="Marshall Behrns — Product leader building franchise tech with agentic AI. 15+ years shipping products from 0 to $100M+ across FinTech, innovation, and franchise operations.">
@@ -33,6 +34,35 @@ body {
   font-weight: 350;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+/* ── SKIP LINK ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--gold);
+  color: var(--bg);
+  z-index: 10000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── EXTERNAL LINK A11Y ── */
+[target="_blank"]::after {
+  content: " (opens in new tab)";
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ── grain overlay ── */
@@ -68,14 +98,14 @@ body::after {
 
 .nav-item {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
   padding: 0.35rem 0;
   position: relative;
-  transition: color 0.25s;
+  transition: color 0.2s;
   display: block;
 }
 
@@ -100,7 +130,7 @@ body::after {
 
 .social-link {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -134,7 +164,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 3.5rem 3.5rem 3.5rem 3rem;
+  padding: 3.5rem 3rem;
   border-right: 1px solid var(--border);
   position: relative;
 }
@@ -190,13 +220,13 @@ main {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .about-label-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted2);
   white-space: nowrap;
@@ -209,9 +239,9 @@ main {
 }
 
 .about-bio {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.8;
   color: var(--muted2);
 }
 
@@ -232,7 +262,7 @@ main {
   padding: 0 0 0 1.5rem;
   border-right: none;
 }
-.about-stat + .about-stat:nth-child(3) { margin-top: 1.5rem; }
+.about-stat:nth-child(n+3) { margin-top: 1.5rem; }
 
 .about-stat-val {
   font-family: 'Cormorant Garamond', serif;
@@ -246,7 +276,7 @@ main {
 .about-stat-key {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted2);
   margin-top: 0.3rem;
@@ -266,12 +296,12 @@ main {
   justify-content: space-between;
   padding: 0.85rem 1.1rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
-  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .btn-primary {
@@ -324,6 +354,14 @@ main {
   width: 100%;
   height: 100%;
   flex: 1;
+}
+
+.featured-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--bg);
+  display: block;
 }
 
 .img-ph {
@@ -396,7 +434,7 @@ main {
 .feat-cat {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted2);
   margin-bottom: 1rem;
@@ -412,7 +450,7 @@ main {
 }
 
 .feat-desc {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
   line-height: 1.8;
   color: var(--muted2);
@@ -432,7 +470,7 @@ main {
 .feat-year {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--gold-muted);
 }
 
@@ -497,7 +535,7 @@ main {
 .build-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .build-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .build-right { padding: 4rem 3rem; display: flex; flex-direction: column; gap: 0; }
-.build-intro { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--muted2); max-width: 480px; }
+.build-intro { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 480px; }
 .build-intro + .build-intro { margin-top: 1.4rem; }
 .build-intro strong { color: var(--text); font-weight: 400; }
 .build-headline {
@@ -525,13 +563,13 @@ main {
 .pipeline-num {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--gold-muted);
   padding-top: 0.2rem;
 }
 .pipeline-role {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text);
@@ -542,6 +580,12 @@ main {
   font-weight: 300;
   line-height: 1.7;
   color: var(--muted2);
+}
+.build-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 .build-tag {
   display: inline-block;
@@ -565,13 +609,13 @@ main {
 .about-body-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .about-body-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .about-body-right { padding: 4rem 3rem; }
-.about-long-bio p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--muted2); max-width: 480px; }
+.about-long-bio p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 480px; }
 .about-long-bio p + p { margin-top: 1.4rem; }
 .about-long-bio p strong { color: var(--text); font-weight: 400; }
 .about-personal { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.8rem; }
 .about-personal-item { display: flex; gap: 1.2rem; align-items: baseline; }
 .personal-key { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
-.personal-val { font-size: 0.88rem; font-weight: 300; color: var(--muted2); }
+.personal-val { font-size: 0.85rem; font-weight: 300; color: var(--muted2); }
 .exp-timeline { display: flex; flex-direction: column; }
 .exp-item { padding: 2rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; }
 .exp-item:first-child { padding-top: 0; }
@@ -601,7 +645,7 @@ footer {
 .footer-name {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted2);
@@ -615,7 +659,7 @@ footer {
 .footer-links a {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
@@ -676,6 +720,10 @@ footer {
   .section-head, footer { padding: 1.5rem; }
   .work-card:first-child { grid-column: span 1; }
   .work-card:first-child .card-img { aspect-ratio: 3/2; }
+  .about-body-grid { grid-template-columns: 1fr; }
+  .about-body-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+  .about-body-right { padding: 3rem 1.5rem; }
+  footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
 }
 
 @media (max-width: 480px) {
@@ -683,6 +731,9 @@ footer {
   .work-card { border-right: none; }
   .work-card:first-child { grid-column: span 1; }
   .work-card:first-child .card-img { aspect-ratio: 3/2; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .exp-years { line-height: 1.2; }
+  .exp-years br { display: none; }
 }
 
 /* ── FOCUS VISIBLE ── */
@@ -693,6 +744,7 @@ a:focus-visible, button:focus-visible {
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .hero-name, .hero-role, .hero-right {
     animation: none;
     opacity: 1;
@@ -704,13 +756,16 @@ a:focus-visible, button:focus-visible {
   }
 }
 </style>
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <!-- SIDEBAR NAV -->
-<nav class="sidebar">
+<nav class="sidebar" aria-label="Main navigation">
   <div class="sidebar-top">
-    <a href="#" class="nav-item active">Home</a>
+    <a href="#" class="nav-item active" aria-current="page">Home</a>
     <a href="#build" class="nav-item">Build</a>
     <a href="#work" class="nav-item">Works</a>
     <a href="#about" class="nav-item">About</a>
@@ -725,7 +780,7 @@ a:focus-visible, button:focus-visible {
   </div>
 </nav>
 
-<main>
+<main id="main-content">
 
   <!-- HERO -->
   <section class="hero">
@@ -756,11 +811,11 @@ a:focus-visible, button:focus-visible {
             <span class="about-stat-val">$100M+</span>
             <span class="about-stat-key">GMV Impact</span>
           </div>
-          <div class="about-stat" style="margin-top:1.5rem;">
+          <div class="about-stat">
             <span class="about-stat-val">$20M+</span>
             <span class="about-stat-key">Revenue Unlocked</span>
           </div>
-          <div class="about-stat" style="margin-top:1.5rem;">
+          <div class="about-stat">
             <span class="about-stat-val">0→1</span>
             <span class="about-stat-key">Products Shipped</span>
           </div>
@@ -797,10 +852,10 @@ a:focus-visible, button:focus-visible {
         <p class="build-intro">
           Most teams use AI to write faster. I built something different — a <strong>multi-agent development system</strong> where every stage of the software lifecycle is owned by a purpose-built agent grounded in real business context.
         </p>
-        <p class="build-intro" style="margin-top:1.4rem;">
+        <p class="build-intro">
           The result is a living, compounding system. Specs stay in sync with code. Every change is proposed, reviewed, built, verified, and archived — with full traceability. <strong>This is how a solo product leader ships at team velocity.</strong>
         </p>
-        <div style="margin-top:2rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <div class="build-tags">
           <span class="build-tag">Claude Code</span>
           <span class="build-tag">Multi-Agent</span>
           <span class="build-tag">GitHub</span>
@@ -813,7 +868,7 @@ a:focus-visible, button:focus-visible {
       </div>
 
       <div class="build-right reveal">
-        <div class="about-label" style="margin-bottom:2.5rem;">
+        <div class="about-label">
           <span class="about-label-text">Change Lifecycle</span>
           <span class="about-label-line"></span>
         </div>
@@ -869,8 +924,9 @@ a:focus-visible, button:focus-visible {
     <div class="featured-project reveal">
       <div class="featured-img">
         <div class="featured-img-inner">
-          <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:oklch(6% 0.008 250);display:block;">
+          <video autoplay loop muted playsinline class="featured-video">
             <source src="wow-os-demo.mp4" type="video/mp4">
+            <p>WOW OS platform demo — video playback not supported.</p>
           </video>
         </div>
         <span class="img-tag">Featured</span>
@@ -892,7 +948,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-rings"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">CRM · Field Ops</span>
@@ -903,7 +959,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-hatch"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">Product Strategy</span>
@@ -914,7 +970,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-dots" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-dots"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">Self-Service · CX</span>
@@ -925,7 +981,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-grid" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-grid"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">Brand · Segmentation</span>
@@ -936,7 +992,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-rings"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">AI · Agentic Systems</span>
@@ -947,7 +1003,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="work-card reveal">
         <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
+          <div class="card-img-inner"><div class="img-ph img-ph-hatch"></div></div>
         </div>
         <div class="card-info">
           <span class="card-cat">Scheduling · Dispatch</span>
@@ -997,7 +1053,7 @@ a:focus-visible, button:focus-visible {
       </div>
 
       <div class="about-body-right reveal">
-        <div class="about-label" style="margin-bottom:2.5rem;">
+        <div class="about-label">
           <span class="about-label-text">Experience</span>
           <span class="about-label-line"></span>
         </div>
@@ -1089,12 +1145,15 @@ window.addEventListener('scroll', () => {
   for (const s of sectionEls) {
     if (s.el && scrollY >= s.el.offsetTop - 200) active = s.id;
   }
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (active) {
-    document.querySelector('.nav-item[href="#' + active + '"]').classList.add('active');
-  } else {
-    document.querySelector('.nav-item:first-child').classList.add('active');
-  }
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.remove('active');
+    n.removeAttribute('aria-current');
+  });
+  const target = active
+    ? document.querySelector('.nav-item[href="#' + active + '"]')
+    : document.querySelector('.nav-item:first-child');
+  target.classList.add('active');
+  target.setAttribute('aria-current', 'page');
 });
 </script>
 
