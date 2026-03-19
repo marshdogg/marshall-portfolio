@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marshall — Product Leader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Marshall Behrns — Product leader building franchise tech with agentic AI. 15+ years shipping products from 0 to $100M+ across FinTech, innovation, and franchise operations.">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,10 +17,8 @@
   --text:    oklch(98% 0.005 250);
   --muted:   oklch(58% 0.008 250);
   --muted2:  oklch(78% 0.008 250);
-  --accent:  oklch(75% 0.15 70);
   --gold:       oklch(75% 0.15 70);
   --gold-light: oklch(85% 0.12 75);
-  --gold-deep:  oklch(65% 0.18 55);
   --gold-muted: oklch(50% 0.10 65);
   --sidebar: 160px;
   --ease:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -45,7 +44,6 @@ body::after {
   pointer-events: none;
   z-index: 9000;
 }
-
 
 /* ── LEFT SIDEBAR ── */
 .sidebar {
@@ -99,12 +97,6 @@ body::after {
   background: var(--gold);
 }
 .nav-item:not(.active):hover { color: var(--text); }
-
-.sidebar-socials {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
 
 .social-link {
   font-family: 'DM Sans', sans-serif;
@@ -183,17 +175,6 @@ main {
   background: var(--border2);
 }
 
-.hero-index {
-  position: absolute;
-  top: 2.5rem;
-  right: 3.5rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: var(--gold-muted);
-  opacity: 0;
-  animation: fadeIn 0.8s var(--ease) 1s forwards;
-}
 
 /* ── HERO RIGHT (About) ── */
 .hero-right {
@@ -234,7 +215,6 @@ main {
   color: var(--muted2);
 }
 
-
 .about-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -258,7 +238,7 @@ main {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
   font-weight: 300;
-  color: var(--accent);
+  color: var(--gold);
   line-height: 1;
   display: block;
 }
@@ -291,7 +271,7 @@ main {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
-  transition: all 0.25s;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
 
 .btn-primary {
@@ -308,7 +288,6 @@ main {
 }
 .btn-outline:hover { border-color: var(--gold-muted); color: var(--gold-light); }
 
-
 /* ── SECTION HEADER ── */
 .section-head {
   display: flex;
@@ -318,19 +297,6 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
-.section-label-row {
-  display: flex;
-  align-items: baseline;
-  gap: 1.2rem;
-}
-
-.section-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  color: var(--gold-muted);
-}
-
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
@@ -338,27 +304,6 @@ main {
   font-style: italic;
   color: var(--text);
 }
-
-.filter-tabs {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.tab {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid transparent;
-  color: var(--muted2);
-  background: transparent;
-  border-radius: 2px;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.tab:hover { color: var(--text); border-color: var(--border2); }
-.tab.active { color: var(--gold-light); border-color: var(--gold-muted); background: oklch(10% 0.02 65); }
 
 /* ── FEATURED PROJECT ── */
 .featured-project {
@@ -491,7 +436,6 @@ main {
   color: var(--gold-muted);
 }
 
-
 /* ── WORK GRID ── */
 .work-grid {
   display: grid;
@@ -504,6 +448,8 @@ main {
   overflow: hidden;
 }
 .work-card:nth-child(3n) { border-right: none; }
+.work-card:first-child { grid-column: span 2; }
+.work-card:first-child .card-img { aspect-ratio: 2/1; }
 
 .card-img {
   aspect-ratio: 3/2;
@@ -547,7 +493,7 @@ main {
 }
 
 /* ── BUILD SECTION ── */
-.build-section { border-top: 1px solid var(--border); background: oklch(7.5% 0.012 60); }
+.build-section { background: oklch(7.5% 0.012 60); }
 .build-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .build-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .build-right { padding: 4rem 3rem; display: flex; flex-direction: column; gap: 0; }
@@ -583,7 +529,6 @@ main {
   color: var(--gold-muted);
   padding-top: 0.2rem;
 }
-.pipeline-content {}
 .pipeline-role {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
@@ -617,7 +562,6 @@ main {
 }
 
 /* ── ABOUT SECTION ── */
-.about-section { border-top: 1px solid var(--border); }
 .about-body-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .about-body-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .about-body-right { padding: 4rem 3rem; }
@@ -721,7 +665,7 @@ footer {
   .sidebar-mid { flex-direction: row; gap: 1rem; }
   .sidebar-bottom { display: none; }
   main { margin-left: 0; }
-  .hero { grid-template-columns: 1fr; height: auto; }
+  .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 6rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
   .hero-right { padding: 3rem 2rem; }
   .work-grid { grid-template-columns: 1fr 1fr; }
@@ -741,14 +685,6 @@ footer {
   .work-card:first-child .card-img { aspect-ratio: 3/2; }
 }
 
-/* ── WORK CARD GRID VARIATION ── */
-.work-card:first-child {
-  grid-column: span 2;
-}
-.work-card:first-child .card-img {
-  aspect-ratio: 2/1;
-}
-
 /* ── FOCUS VISIBLE ── */
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--gold);
@@ -757,7 +693,7 @@ a:focus-visible, button:focus-visible {
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-name, .hero-role, .hero-index, .hero-right {
+  .hero-name, .hero-role, .hero-right {
     animation: none;
     opacity: 1;
   }
@@ -771,7 +707,6 @@ a:focus-visible, button:focus-visible {
 </head>
 <body>
 
-
 <!-- SIDEBAR NAV -->
 <nav class="sidebar">
   <div class="sidebar-top">
@@ -781,8 +716,8 @@ a:focus-visible, button:focus-visible {
     <a href="#about" class="nav-item">About</a>
   </div>
   <div class="sidebar-mid">
-    <a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank" class="social-link">LinkedIn</a>
-    <a href="https://github.com/marshdogg" target="_blank" class="social-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+    <a href="https://github.com/marshdogg" target="_blank" rel="noopener" class="social-link">GitHub</a>
     <a href="mailto:marshall.behrns@gmail.com" class="social-link">Email</a>
   </div>
   <div class="sidebar-bottom">
@@ -796,8 +731,6 @@ a:focus-visible, button:focus-visible {
   <section class="hero">
 
     <div class="hero-left">
-      <span class="hero-index">001 / HOME</span>
-
       <h1 class="hero-name">
         Marshall<br>Behrns
       </h1>
@@ -810,11 +743,6 @@ a:focus-visible, button:focus-visible {
 
     <div class="hero-right">
       <div>
-        <div class="about-label">
-          <span class="about-label-text">About</span>
-          <span class="about-label-line"></span>
-        </div>
-
         <p class="about-bio">
           Product leader who moves between strategy decks and terminal windows. Currently building WOW OS — a franchise management platform — with an agentic AI pipeline I architected myself.
         </p>
@@ -841,7 +769,7 @@ a:focus-visible, button:focus-visible {
 
       <div>
         <div class="hero-ctas">
-          <a href="https://calendly.com/marshallbehrns" target="_blank" class="btn btn-primary">
+          <a href="https://calendly.com/marshallbehrns" target="_blank" rel="noopener" class="btn btn-primary">
             Book a Call
             <span>↗</span>
           </a>
@@ -859,22 +787,15 @@ a:focus-visible, button:focus-visible {
   <section id="build" class="build-section">
 
     <div class="section-head reveal">
-      <div class="section-label-row">
-        <span class="section-num">002</span>
-        <h2 class="section-title">How I Build</h2>
-      </div>
+      <h2 class="section-title">How I Build</h2>
     </div>
 
     <div class="build-grid">
 
       <div class="build-left reveal">
-        <span class="section-num">The Framework</span>
         <h3 class="build-headline">A full agentic SDLC —<br>not a shortcut,<br>a system.</h3>
         <p class="build-intro">
           Most teams use AI to write faster. I built something different — a <strong>multi-agent development system</strong> where every stage of the software lifecycle is owned by a purpose-built agent grounded in real business context.
-        </p>
-        <p class="build-intro" style="margin-top:1.4rem;">
-          The system covers the full stack: product requirements, UX and UI design, frontend and backend implementation, security review, QA, DevOps, finance logic, and legal compliance. <strong>Each agent reads the actual business documents</strong> for WOW OS — PRDs, specs, department context — before producing output.
         </p>
         <p class="build-intro" style="margin-top:1.4rem;">
           The result is a living, compounding system. Specs stay in sync with code. Every change is proposed, reviewed, built, verified, and archived — with full traceability. <strong>This is how a solo product leader ships at team velocity.</strong>
@@ -930,14 +851,6 @@ a:focus-visible, button:focus-visible {
             </div>
           </div>
 
-          <div class="pipeline-item">
-            <span class="pipeline-num">—</span>
-            <div class="pipeline-content">
-              <div class="pipeline-role">10+ Specialist Agents</div>
-              <p class="pipeline-desc">Product · UX · UI · Frontend · Backend · Security · QA · DevOps · Finance · Legal — each grounded in WOW OS business context, each with a defined output format, each compounding with every feature shipped.</p>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -949,20 +862,11 @@ a:focus-visible, button:focus-visible {
   <section id="work">
 
     <div class="section-head reveal">
-      <div class="section-label-row">
-        <span class="section-num">003</span>
-        <h2 class="section-title">Selected Work</h2>
-      </div>
-      <div class="filter-tabs">
-        <button class="tab active" data-filter="all">All</button>
-        <button class="tab" data-filter="platform">Platform</button>
-        <button class="tab" data-filter="crm">CRM</button>
-        <button class="tab" data-filter="strategy">Strategy</button>
-      </div>
+      <h2 class="section-title">Selected Work</h2>
     </div>
 
     <!-- Featured -->
-    <div class="featured-project reveal" data-cat="platform">
+    <div class="featured-project reveal">
       <div class="featured-img">
         <div class="featured-img-inner">
           <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:oklch(6% 0.008 250);display:block;">
@@ -986,7 +890,7 @@ a:focus-visible, button:focus-visible {
     <!-- Grid -->
     <div class="work-grid">
 
-      <div class="work-card reveal" data-cat="crm">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
         </div>
@@ -997,7 +901,7 @@ a:focus-visible, button:focus-visible {
         </div>
       </div>
 
-      <div class="work-card reveal" data-cat="strategy">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
         </div>
@@ -1008,7 +912,7 @@ a:focus-visible, button:focus-visible {
         </div>
       </div>
 
-      <div class="work-card reveal" data-cat="platform">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-dots" style="height:100%;"></div></div>
         </div>
@@ -1019,7 +923,7 @@ a:focus-visible, button:focus-visible {
         </div>
       </div>
 
-      <div class="work-card reveal" data-cat="strategy">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-grid" style="height:100%;"></div></div>
         </div>
@@ -1030,7 +934,7 @@ a:focus-visible, button:focus-visible {
         </div>
       </div>
 
-      <div class="work-card reveal" data-cat="platform">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-rings" style="height:100%;"></div></div>
         </div>
@@ -1041,7 +945,7 @@ a:focus-visible, button:focus-visible {
         </div>
       </div>
 
-      <div class="work-card reveal" data-cat="crm">
+      <div class="work-card reveal">
         <div class="card-img">
           <div class="card-img-inner"><div class="img-ph img-ph-hatch" style="height:100%;"></div></div>
         </div>
@@ -1059,10 +963,7 @@ a:focus-visible, button:focus-visible {
   <section id="about" class="about-section">
 
     <div class="section-head reveal">
-      <div class="section-label-row">
-        <span class="section-num">004</span>
-        <h2 class="section-title">About</h2>
-      </div>
+      <h2 class="section-title">About</h2>
     </div>
 
     <div class="about-body-grid">
@@ -1108,7 +1009,7 @@ a:focus-visible, button:focus-visible {
             <div class="exp-content">
               <div class="exp-role">Director, Product & Technology</div>
               <div class="exp-company">WOW 1 DAY PAINTING</div>
-              <p class="exp-outcome">Building WOW OS — a proprietary franchise management platform that replaces Salesforce and consolidates every operational tool into a single system across 50+ locations. Architected using an agentic AI development pipeline built on Claude Code.</p>
+              <p class="exp-outcome">Building WOW OS — a proprietary franchise management platform replacing Salesforce across 50+ locations. Architected using an agentic AI pipeline built on Claude Code.</p>
             </div>
           </div>
 
@@ -1159,8 +1060,8 @@ a:focus-visible, button:focus-visible {
     <span class="footer-name">Marshall Behrns</span>
     <ul class="footer-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/marshdogg" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/marshall-behrns-39023912" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/marshdogg" target="_blank" rel="noopener">GitHub</a></li>
       <li><a href="mailto:marshall.behrns@gmail.com">Email</a></li>
     </ul>
     <span class="footer-copy">© 2026</span>
@@ -1169,24 +1070,12 @@ a:focus-visible, button:focus-visible {
 </main>
 
 <script>
-
 /* scroll reveal */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* filter */
-const tabs = document.querySelectorAll('.tab');
-const cards = document.querySelectorAll('[data-cat]');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const f = tab.dataset.filter;
-    cards.forEach(c => { c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none'; });
-  });
-});
 
 /* active nav on scroll */
 const sectionEls = [
