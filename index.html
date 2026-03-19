@@ -6,6 +6,7 @@
 <meta name="color-scheme" content="dark">
 <title>Marshall — Product Leader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="Marshall Behrns — Product leader building franchise tech with agentic AI. 15+ years shipping products from 0 to $100M+ across FinTech, innovation, and franchise operations.">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -25,7 +26,7 @@
   --ease:    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html { font-size: 16px; scroll-behavior: smooth; }
+html { font-size: 100%; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -298,6 +299,7 @@ main {
   color: var(--gold);
   line-height: 1;
   display: block;
+  font-variant-numeric: tabular-nums;
 }
 
 .about-stat-key {
@@ -362,6 +364,7 @@ main {
   font-style: italic;
   line-height: 1.2;
   color: var(--text);
+  text-wrap: balance;
 }
 
 /* ── FEATURED PROJECT ── */
@@ -369,6 +372,16 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid var(--border);
+}
+.featured-project:nth-child(even) {
+  direction: rtl;
+}
+.featured-project:nth-child(even) > * {
+  direction: ltr;
+}
+.featured-project:nth-child(even) .featured-img {
+  border-right: none;
+  border-left: 1px solid var(--border);
 }
 
 .featured-img {
@@ -395,64 +408,37 @@ main {
   display: block;
 }
 
-.img-ph {
-  width: 100%; height: 100%;
-  position: relative; overflow: hidden;
+.feat-img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
-.img-ph-grid {
-  background: oklch(8% 0.006 250);
-}
-.img-ph-grid::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 48px, var(--border) 48px, var(--border) 49px),
-    repeating-linear-gradient(90deg, transparent, transparent 48px, var(--border) 48px, var(--border) 49px);
-}
-.img-ph-rings {
-  background: oklch(7.5% 0.006 250);
-}
-.img-ph-rings::before {
-  content: '';
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%; height: 60%;
-  border: 1px solid var(--border2);
-  border-radius: 50%;
-  box-shadow: 0 0 0 24px var(--bg), 0 0 0 25px var(--border);
-}
-.img-ph-hatch {
-  background: oklch(8.5% 0.006 250);
-}
-.img-ph-hatch::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    -45deg, transparent, transparent 10px, var(--border) 10px, var(--border) 11px
-  );
-  opacity: 0.5;
-}
-.img-ph-dots {
-  background: oklch(7% 0.006 250);
-}
-.img-ph-dots::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: radial-gradient(circle, var(--border2) 1px, transparent 1px);
-  background-size: 20px 20px;
+.feat-img-cover { object-fit: cover; }
+.feat-img-contain {
+  object-fit: contain;
+  background: var(--bg);
 }
 
-.img-tag {
-  position: absolute;
-  top: 1rem; left: 1rem;
+/* ── WORK SECTION DIVIDER ── */
+.work-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.work-divider-text {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-light);
-  background: oklch(6% 0.008 250 / 0.9);
-  padding: 0.28rem 0.6rem;
-  border: 1px solid var(--gold-muted);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.work-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
 .featured-info {
@@ -478,6 +464,7 @@ main {
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--text);
+  text-wrap: balance;
 }
 
 .feat-desc {
@@ -486,7 +473,7 @@ main {
   line-height: 1.8;
   color: var(--muted2);
   margin-top: 1.5rem;
-  max-width: 380px;
+  max-width: 60ch;
 }
 
 .feat-footer {
@@ -505,77 +492,12 @@ main {
   color: var(--gold-muted);
 }
 
-/* ── WORK GRID ── */
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.work-card {
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s;
-}
-.work-card:hover {
-  transform: translateY(-2px);
-  box-shadow: inset 0 2px 0 var(--gold);
-}
-.work-card:hover .card-title { color: var(--gold-light); }
-.work-card:nth-child(3n) { border-right: none; }
-.work-card:first-child { grid-column: span 2; }
-.work-card:first-child .card-img { aspect-ratio: 2/1; }
-
-.card-img {
-  aspect-ratio: 3/2;
-  overflow: hidden;
-  position: relative;
-}
-.card-img-inner {
-  width: 100%; height: 100%;
-  transition: transform 0.3s var(--ease);
-}
-.work-card:hover .card-img-inner { transform: scale(1.03); }
-
-.card-info {
-  padding: 1.4rem 1.5rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.card-cat {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted2);
-}
-
-.card-title {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200;
-  font-size: 1.2rem;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  line-height: 1.2;
-  transition: color 0.2s;
-}
-
-.card-year {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--gold-muted);
-}
-
 /* ── BUILD SECTION ── */
 .build-section { background: oklch(7.5% 0.012 60); }
 .build-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .build-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .build-right { padding: 4rem 3rem; display: flex; flex-direction: column; gap: 0; }
-.build-intro { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 480px; }
+.build-intro { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 60ch; }
 .build-intro + .build-intro { margin-top: 1.4rem; }
 .build-intro strong { color: var(--text); font-weight: 400; }
 .build-headline {
@@ -587,6 +509,7 @@ main {
   color: var(--text);
   margin-bottom: 2rem;
   margin-top: 1.5rem;
+  text-wrap: balance;
 }
 .pipeline-list { display: flex; flex-direction: column; }
 .pipeline-item {
@@ -653,7 +576,7 @@ main {
 .about-body-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .about-body-left { padding: 4rem 3rem; border-right: 1px solid var(--border); }
 .about-body-right { padding: 4rem 3rem; }
-.about-long-bio p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 480px; }
+.about-long-bio p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted2); max-width: 60ch; }
 .about-long-bio p + p { margin-top: 1.4rem; }
 .about-long-bio p strong { color: var(--text); font-weight: 400; }
 .about-personal { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.8rem; }
@@ -749,21 +672,22 @@ footer {
     z-index: 200;
   }
   .sidebar-top { flex-direction: row; gap: 1.5rem; }
+  .nav-item { min-height: 44px; display: flex; align-items: center; }
   .nav-item::before { display: none; }
   .sidebar-mid { flex-direction: row; gap: 1rem; }
+  .social-link { min-height: 44px; display: flex; align-items: center; }
   .sidebar-bottom { display: none; }
   main { margin-left: 0; }
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 6rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
   .hero-right { padding: 3rem 2rem; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .work-card:nth-child(3n) { border-right: 1px solid var(--border); }
-  .work-card:nth-child(2n) { border-right: none; }
   .featured-project { grid-template-columns: 1fr; }
+  .featured-project:nth-child(even) { direction: ltr; }
   .featured-img { border-right: none; border-bottom: 1px solid var(--border); }
-  .section-head, footer { padding: 1.5rem; }
-  .work-card:first-child { grid-column: span 1; }
-  .work-card:first-child .card-img { aspect-ratio: 3/2; }
+  .featured-project:nth-child(even) .featured-img { border-left: none; border-bottom: 1px solid var(--border); }
+  .section-head, .work-divider, footer { padding: 1.5rem; }
+  .featured-info { padding: 2rem 1.5rem; }
+  .featured-project:hover .featured-img-inner { transform: none; }
   .about-body-grid { grid-template-columns: 1fr; }
   .about-body-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
   .about-body-right { padding: 3rem 1.5rem; }
@@ -771,10 +695,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card { border-right: none; }
-  .work-card:first-child { grid-column: span 1; }
-  .work-card:first-child .card-img { aspect-ratio: 3/2; }
   .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .exp-years { line-height: 1.2; }
   .exp-years br { display: none; }
@@ -806,8 +726,8 @@ a:focus-visible, button:focus-visible {
     transform: none;
     transition: none;
   }
-  .work-card, .card-img-inner, .featured-img-inner,
-  .pipeline-item, .pipeline-num, .card-title, .btn,
+  .featured-img-inner,
+  .pipeline-item, .pipeline-num, .btn,
   .nav-item::after {
     transition: none;
   }
@@ -823,8 +743,8 @@ a:focus-visible, button:focus-visible {
 <nav class="sidebar" aria-label="Main navigation">
   <div class="sidebar-top">
     <a href="#" class="nav-item active" aria-current="page">Home</a>
-    <a href="#build" class="nav-item">Build</a>
     <a href="#work" class="nav-item">Works</a>
+    <a href="#build" class="nav-item">Build</a>
     <a href="#about" class="nav-item">About</a>
   </div>
   <div class="sidebar-mid">
@@ -862,7 +782,7 @@ a:focus-visible, button:focus-visible {
         <div class="about-stats">
           <div class="about-stat">
             <span class="about-stat-val">15+</span>
-            <span class="about-stat-key">Yrs Experience</span>
+            <span class="about-stat-key">Years Experience</span>
           </div>
           <div class="about-stat">
             <span class="about-stat-val">$100M+</span>
@@ -874,7 +794,7 @@ a:focus-visible, button:focus-visible {
           </div>
           <div class="about-stat">
             <span class="about-stat-val">0→1</span>
-            <span class="about-stat-key">Products Shipped</span>
+            <span class="about-stat-key">Products Built</span>
           </div>
         </div>
       </div>
@@ -889,6 +809,178 @@ a:focus-visible, button:focus-visible {
             Email Me
             <span>→</span>
           </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+
+    <div class="section-head reveal">
+      <h2 class="section-title">Selected Work</h2>
+    </div>
+
+    <!-- Featured -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <video autoplay loop muted playsinline class="featured-video">
+            <source src="wow-os-demo.mp4" type="video/mp4">
+            <p>WOW OS platform demo — video playback not supported.</p>
+          </video>
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Platform · Franchise Tech · 0→1</p>
+          <h3 class="feat-title">WOW OS —<br>Franchise Management<br>Platform</h3>
+          <p class="feat-desc">A proprietary franchise management platform that replaces Salesforce and consolidates every operational tool into a single system across 50+ locations. Architected using an agentic AI development pipeline built on Claude Code.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2025 — Present</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: Ideal Customer Profile -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="EfficientRefresher.png" alt="Efficient Refresher customer persona research — study context and purpose" class="feat-img feat-img-cover" width="1752" height="982">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Research · Segmentation · Strategy</p>
+          <h3 class="feat-title">Ideal Customer<br>Profile<br>Identification</h3>
+          <p class="feat-desc">Designed and conducted conjoint research to identify WOW 1 DAY PAINTING's ideal customer — an affluent segment that values quality, punctuality, and professionalism. They repaint every 2–5 years, far more often than expected, shifting strategy toward long-term retention and shaping the 2025/26 roadmap.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: Online Booking Engine -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="OBE.png" alt="Single-page online booking engine with modern calendar interface" class="feat-img feat-img-contain" width="656" height="1252" loading="lazy">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">CX · Conversion · Revenue</p>
+          <h3 class="feat-title">Single-Page<br>Online Booking<br>Engine</h3>
+          <p class="feat-desc">Replaced the legacy multi-step booking flow with a single-page experience — cutting load time by 50%, introducing modern calendar functionality, and lifting completion rate ~9%, driving over $500K in additional revenue.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-divider reveal">
+      <span class="work-divider-text">Earlier Work</span>
+      <span class="work-divider-line"></span>
+    </div>
+
+    <!-- Featured: Clearco Risk Rating -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="Clearco.webp" alt="Clearco Invoice Funding risk rating product interface" class="feat-img feat-img-contain" width="1034" height="1286" loading="lazy">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">FinTech · Risk · Underwriting</p>
+          <h3 class="feat-title">Invoice Funding<br>Risk Rating<br>System</h3>
+          <p class="feat-desc">Built a risk-based pricing framework using Plaid and Heron data integrations to assess merchant creditworthiness in real-time. The system funded $30M+/month in invoices with ~1% loss rates across Clearco's flagship Invoice Funding product.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2023 — 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: GEO Vancouver -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="GEO.png" alt="GEO Vancouver free-to-play challenge game app" class="feat-img feat-img-cover" width="1848" height="742" loading="lazy">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Innovation · Gaming · Mobile App</p>
+          <h3 class="feat-title">GEO Vancouver —<br>Free-to-Play<br>Challenge Game</h3>
+          <p class="feat-desc">A real-world challenge game app where players completed location-based challenges throughout Vancouver to earn entries for experiential prizes. Designed as a new customer acquisition channel to bring younger demographics into BCLC's ecosystem.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2018 — 2019</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: Head to Head Battleship -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="battleship.png" alt="Head to Head Battleship scratch and win card" class="feat-img feat-img-contain" width="538" height="902" loading="lazy">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Innovation · Gaming · Co-Creation</p>
+          <h3 class="feat-title">Head to Head<br>Battleship<br>Scratch &amp; Win</h3>
+          <p class="feat-desc">The first 2-player scratch card in North America, co-created with Hasbro. Introduced social gaming mechanics to traditional lottery products and won the World Lottery Association award for best new game.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2019</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: Casino Your Way -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <img src="CYW.png" alt="Casino Your Way private table booking experience" class="feat-img feat-img-cover" width="1846" height="1034" loading="lazy">
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Innovation · CX · Casino</p>
+          <h3 class="feat-title">Casino Your Way —<br>OpenTable for<br>Table Games</h3>
+          <p class="feat-desc">Allowed new-to-casino customers to book private table gaming sessions with a dedicated dealer at BCLC properties. 70% of participants transitioned to live floor play, proving the concept as an effective customer acquisition funnel.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2017</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured: VR Escape Room -->
+    <div class="featured-project reveal">
+      <div class="featured-img">
+        <div class="featured-img-inner">
+          <video autoplay loop muted playsinline preload="none" class="featured-video">
+            <source src="BCLCEScape_NoMovement.mp4" type="video/mp4">
+            <p>VR Escape Room demo — video playback not supported.</p>
+          </video>
+        </div>
+      </div>
+      <div class="featured-info">
+        <div>
+          <p class="feat-cat">Innovation · VR · Gaming</p>
+          <h3 class="feat-title">VR Escape Room —<br>First Chance-Based<br>VR Game</h3>
+          <p class="feat-desc">The first chance-based virtual reality escape room, designed as a casino floor attraction at BCLC. Players solved puzzles in a fully immersive VR environment — serving as a novel entry point for customers who wouldn't typically visit a casino.</p>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-year">2015</span>
         </div>
       </div>
     </div>
@@ -942,7 +1034,7 @@ a:focus-visible, button:focus-visible {
           <div class="pipeline-item">
             <span class="pipeline-num">02</span>
             <div class="pipeline-content">
-              <div class="pipeline-role">Review & Design</div>
+              <div class="pipeline-role">Review &amp; Design</div>
               <p class="pipeline-desc">Specialist agents — covering Product, UX, UI, Technology, Sales, Operations, and Franchise Development — each review the proposal through their own business lens, producing GO / CONDITIONAL GO / NO-GO assessments before a line of code is touched.</p>
             </div>
           </div>
@@ -958,7 +1050,7 @@ a:focus-visible, button:focus-visible {
           <div class="pipeline-item">
             <span class="pipeline-num">04</span>
             <div class="pipeline-content">
-              <div class="pipeline-role">Verify & Archive</div>
+              <div class="pipeline-role">Verify &amp; Archive</div>
               <p class="pipeline-desc">Every shipped change is validated for completeness, correctness, and coherence against the delta spec. Once verified, living specs are updated automatically — keeping documentation in sync with the codebase at all times.</p>
             </div>
           </div>
@@ -968,108 +1060,6 @@ a:focus-visible, button:focus-visible {
 
     </div>
 
-  </section>
-
-  <!-- WORK -->
-  <section id="work">
-
-    <div class="section-head reveal">
-      <h2 class="section-title">Selected Work</h2>
-    </div>
-
-    <!-- Featured -->
-    <div class="featured-project reveal">
-      <div class="featured-img">
-        <div class="featured-img-inner">
-          <video autoplay loop muted playsinline class="featured-video">
-            <source src="wow-os-demo.mp4" type="video/mp4">
-            <p>WOW OS platform demo — video playback not supported.</p>
-          </video>
-        </div>
-        <span class="img-tag">Featured</span>
-      </div>
-      <div class="featured-info">
-        <div>
-          <p class="feat-cat">Platform · Franchise Tech · 0→1</p>
-          <h3 class="feat-title">WOW OS —<br>Franchise Management<br>Platform</h3>
-          <p class="feat-desc">A proprietary franchise management platform that replaces Salesforce and consolidates every operational tool into a single system across 50+ locations. Architected using an agentic AI development pipeline built on Claude Code.</p>
-        </div>
-        <div class="feat-footer">
-          <span class="feat-year">2024 — Ongoing</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid -->
-    <div class="work-grid">
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-rings"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">CRM · Field Ops</span>
-          <span class="card-title">Shack Shine CRM Mind Meld</span>
-          <span class="card-year">2024</span>
-        </div>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-hatch"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">Product Strategy</span>
-          <span class="card-title">2026–28 Technology Roadmap</span>
-          <span class="card-year">2025</span>
-        </div>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-dots"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">Self-Service · CX</span>
-          <span class="card-title">Cancel &amp; Reschedule Pilot</span>
-          <span class="card-year">2024</span>
-        </div>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-grid"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">Brand · Segmentation</span>
-          <span class="card-title">Efficient Refresher Persona Framework</span>
-          <span class="card-year">2024</span>
-        </div>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-rings"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">AI · Agentic Systems</span>
-          <span class="card-title">PRD Agent Pipeline</span>
-          <span class="card-year">2025</span>
-        </div>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-img">
-          <div class="card-img-inner"><div class="img-ph img-ph-hatch"></div></div>
-        </div>
-        <div class="card-info">
-          <span class="card-cat">Scheduling · Dispatch</span>
-          <span class="card-title">Scheduling &amp; Dispatch System</span>
-          <span class="card-year">2024</span>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <!-- ABOUT -->
@@ -1083,10 +1073,10 @@ a:focus-visible, button:focus-visible {
 
       <div class="about-body-left reveal">
         <div class="about-long-bio">
-          <p>I've spent <strong>15 years building products at the edge of where industries get disrupted</strong> — microfinance in Nicaragua, lottery innovation at BCLC, revenue infrastructure at Clearco, and now franchise operations at WOW 1 DAY PAINTING.</p>
+          <p>I've spent <strong>15 years building products at the edge of industry disruption</strong> — microfinance in Nicaragua, lottery innovation at BCLC, revenue infrastructure at Clearco, and now franchise operations at WOW 1 DAY PAINTING.</p>
           <p>My work tends to show up in the numbers: <strong>$100M+ GMV at Clearco</strong>, 16% retention lift, 20% default reduction, TAM expanded 10X through a banking integration I led end-to-end.</p>
           <p>What I care about is the thinking behind the build — clear problem framing, tight OKRs, and products that make the business measurably better. I've led teams, scaled functions from zero, and shipped everything from fintech risk models to the world's first distributed wine cellar trading platform.</p>
-          <p>Right now I'm deep in agentic AI development, <strong>building WOW OS with a Claude Code pipeline I architected myself.</strong></p>
+          <p>Right now I'm deep in agentic AI development, <strong>building WOW OS with an agentic AI pipeline that I lead and co-created.</strong></p>
         </div>
 
         <div class="about-personal">
@@ -1118,7 +1108,7 @@ a:focus-visible, button:focus-visible {
         <div class="exp-timeline">
 
           <div class="exp-item">
-            <span class="exp-years">2024<br>Ongoing</span>
+            <span class="exp-years">2025<br>Present</span>
             <div class="exp-content">
               <div class="exp-role">Director, Product & Technology</div>
               <div class="exp-company">WOW 1 DAY PAINTING</div>
@@ -1127,7 +1117,7 @@ a:focus-visible, button:focus-visible {
           </div>
 
           <div class="exp-item">
-            <span class="exp-years">2021<br>2024</span>
+            <span class="exp-years">2021<br>2025</span>
             <div class="exp-content">
               <div class="exp-role">Senior Staff Product Manager</div>
               <div class="exp-company">CLEARCO</div>
@@ -1257,26 +1247,33 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* active nav on scroll */
 const sectionEls = [
-  { id: 'about', el: document.getElementById('about') },
   { id: 'work',  el: document.getElementById('work') },
-  { id: 'build', el: document.getElementById('build') }
+  { id: 'build', el: document.getElementById('build') },
+  { id: 'about', el: document.getElementById('about') }
 ];
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  let active = null;
-  for (const s of sectionEls) {
-    if (s.el && scrollY >= s.el.offsetTop - 200) active = s.id;
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      let active = null;
+      for (const s of sectionEls) {
+        if (s.el && scrollY >= s.el.offsetTop - 200) active = s.id;
+      }
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.remove('active');
+        n.removeAttribute('aria-current');
+      });
+      const target = active
+        ? document.querySelector('.nav-item[href="#' + active + '"]')
+        : document.querySelector('.nav-item:first-child');
+      target.classList.add('active');
+      target.setAttribute('aria-current', 'page');
+      scrollTicking = false;
+    });
+    scrollTicking = true;
   }
-  document.querySelectorAll('.nav-item').forEach(n => {
-    n.classList.remove('active');
-    n.removeAttribute('aria-current');
-  });
-  const target = active
-    ? document.querySelector('.nav-item[href="#' + active + '"]')
-    : document.querySelector('.nav-item:first-child');
-  target.classList.add('active');
-  target.setAttribute('aria-current', 'page');
-});
+}, { passive: true });
 </script>
 
 </body>
