@@ -7,7 +7,7 @@
 <title>Marshall — Product Leader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <meta name="description" content="Marshall Behrns — Product leader building franchise tech with agentic AI. 15+ years shipping products from 0 to $100M+ across FinTech, innovation, and franchise operations.">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,7 +31,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-weight: 350;
+  font-weight: 300;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-wrap: break-word;
@@ -117,14 +120,21 @@ body::after {
   background: var(--border);
 }
 
-.nav-item.active { color: var(--gold-light); }
-.nav-item.active::after {
+.nav-item::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0;
   width: 100%;
   height: 1px;
   background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s var(--ease);
+}
+.nav-item.active { color: var(--gold-light); }
+.nav-item.active::after,
+.nav-item:not(.active):hover::after {
+  transform: scaleX(1);
 }
 .nav-item:not(.active):hover { color: var(--text); }
 
@@ -179,15 +189,23 @@ main {
   color: var(--text);
   margin-bottom: 2rem;
   opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.3s forwards;
+}
+.hero-name.split { opacity: 1; }
+
+.char {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: charReveal 0.4s var(--ease) forwards;
+}
+
+@keyframes charReveal {
+  to { clip-path: inset(0); }
 }
 
 .hero-role {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.7s forwards;
 }
 
 .hero-role-text {
@@ -197,12 +215,21 @@ main {
   font-weight: 300;
   color: var(--muted2);
   letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease) 0.75s forwards;
 }
 
 .hero-role-line {
   flex: 1;
   height: 1px;
   background: var(--border2);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineReveal 0.6s var(--ease) 0.8s forwards;
+}
+
+@keyframes lineReveal {
+  to { transform: scaleX(1); }
 }
 
 
@@ -213,7 +240,7 @@ main {
   justify-content: space-between;
   padding: 3.5rem 3rem;
   opacity: 0;
-  animation: fadeIn 1s var(--ease) 0.6s forwards;
+  animation: fadeIn 1s var(--ease) 0.5s forwards;
 }
 
 .about-label {
@@ -301,8 +328,9 @@ main {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
 }
+.btn:active { transform: translateY(1px); }
 
 .btn-primary {
   background: var(--gold);
@@ -332,6 +360,7 @@ main {
   font-size: 1.4rem;
   font-weight: 300;
   font-style: italic;
+  line-height: 1.2;
   color: var(--text);
 }
 
@@ -354,7 +383,9 @@ main {
   width: 100%;
   height: 100%;
   flex: 1;
+  transition: transform 0.3s var(--ease);
 }
+.featured-project:hover .featured-img-inner { transform: scale(1.03); }
 
 .featured-video {
   width: 100%;
@@ -450,7 +481,7 @@ main {
 }
 
 .feat-desc {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.8;
   color: var(--muted2);
@@ -484,7 +515,13 @@ main {
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s;
 }
+.work-card:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 2px 0 var(--gold);
+}
+.work-card:hover .card-title { color: var(--gold-light); }
 .work-card:nth-child(3n) { border-right: none; }
 .work-card:first-child { grid-column: span 2; }
 .work-card:first-child .card-img { aspect-ratio: 2/1; }
@@ -496,7 +533,9 @@ main {
 }
 .card-img-inner {
   width: 100%; height: 100%;
+  transition: transform 0.3s var(--ease);
 }
+.work-card:hover .card-img-inner { transform: scale(1.03); }
 
 .card-info {
   padding: 1.4rem 1.5rem;
@@ -517,10 +556,11 @@ main {
 .card-title {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: -0.01em;
   color: var(--text);
   line-height: 1.2;
+  transition: color 0.2s;
 }
 
 .card-year {
@@ -558,7 +598,10 @@ main {
   align-items: start;
   border-left: 2px solid var(--gold-muted);
   padding-left: 1.2rem;
+  transition: border-color 0.2s;
 }
+.pipeline-item:hover { border-color: var(--gold); }
+.pipeline-item:hover .pipeline-num { color: var(--gold); }
 .pipeline-item:last-child { border-bottom: none; }
 .pipeline-num {
   font-family: 'JetBrains Mono', monospace;
@@ -566,6 +609,7 @@ main {
   letter-spacing: 0.1em;
   color: var(--gold-muted);
   padding-top: 0.2rem;
+  transition: color 0.2s;
 }
 .pipeline-role {
   font-family: 'JetBrains Mono', monospace;
@@ -576,7 +620,7 @@ main {
   margin-bottom: 0.4rem;
 }
 .pipeline-desc {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.7;
   color: var(--muted2);
@@ -621,9 +665,9 @@ main {
 .exp-item:first-child { padding-top: 0; }
 .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
 .exp-years { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold-muted); padding-top: 0.2rem; line-height: 1.6; }
-.exp-role { font-family: 'Raleway', sans-serif; font-weight: 200; font-size: 1.1rem; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.2rem; }
+.exp-role { font-family: 'Raleway', sans-serif; font-weight: 200; font-size: 1.2rem; line-height: 1.2; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.2rem; }
 .exp-company { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.75rem; }
-.exp-outcome { font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--muted2); }
+.exp-outcome { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--muted2); }
 
 /* ── REVEAL ANIMATION ── */
 .reveal {
@@ -745,18 +789,31 @@ a:focus-visible, button:focus-visible {
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-name, .hero-role, .hero-right {
+  .hero-name, .hero-role-text, .hero-right {
     animation: none;
     opacity: 1;
+  }
+  .char {
+    clip-path: none;
+    animation: none;
+  }
+  .hero-role-line {
+    transform: none;
+    animation: none;
   }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .work-card, .card-img-inner, .featured-img-inner,
+  .pipeline-item, .pipeline-num, .card-title, .btn,
+  .nav-item::after {
+    transition: none;
+  }
 }
 </style>
-<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+<noscript><style>.reveal { opacity: 1; transform: none; } .hero-name { opacity: 1; } .hero-role-text { opacity: 1; } .hero-role-line { transform: scaleX(1); } .hero-right { opacity: 1; }</style></noscript>
 </head>
 <body>
 
@@ -799,7 +856,7 @@ a:focus-visible, button:focus-visible {
     <div class="hero-right">
       <div>
         <p class="about-bio">
-          Product leader who moves between strategy decks and terminal windows. Currently building WOW OS — a franchise management platform — with an agentic AI pipeline I architected myself.
+          Product leader who moves between strategy decks and terminal windows. Currently building WOW OS — a franchise management platform — with an agentic AI pipeline that I lead and co-created.
         </p>
 
         <div class="about-stats">
@@ -1126,6 +1183,71 @@ a:focus-visible, button:focus-visible {
 </main>
 
 <script>
+/* ── Hero character split ── */
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroName = document.querySelector('.hero-name');
+
+  if (heroName && !prefersReduced) {
+    const lines = heroName.innerHTML.trim().split(/<br\s*\/?>/i);
+    let charIndex = 0;
+    const lineGap = 0.1; /* seconds between lines */
+
+    heroName.innerHTML = lines.map((line, lineIdx) => {
+      const chars = line.trim().split('').map(ch => {
+        if (ch === ' ') return ' ';
+        const delay = 0.15 + charIndex * 0.04;
+        charIndex++;
+        return '<span class="char" style="animation-delay:' + delay.toFixed(2) + 's">' + ch + '</span>';
+      }).join('');
+      if (lineIdx < lines.length - 1) charIndex += Math.round(lineGap / 0.04);
+      return chars;
+    }).join('<br>');
+
+    heroName.classList.add('split');
+  } else if (heroName) {
+    heroName.style.opacity = '1';
+  }
+})();
+
+/* ── Stat counter ── */
+(function() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const statVals = document.querySelectorAll('.about-stat-val');
+  const startDelay = 900; /* ms — after hero animations settle */
+  const duration = 600;
+
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+  statVals.forEach((el, i) => {
+    const raw = el.textContent.trim();
+    /* Parse: "15+", "$100M+", "$20M+", "0→1" */
+    const match = raw.match(/^(\$?)(\d+)(M?\+?|→\d+)$/);
+    if (!match) return;
+
+    const prefix = match[1];
+    const target = parseInt(match[2], 10);
+    const suffix = match[3];
+    el.textContent = prefix + '0' + suffix;
+
+    const stagger = i * 120;
+    let start = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(easeOutQuart(progress) * target);
+      el.textContent = prefix + current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    setTimeout(() => requestAnimationFrame(step), startDelay + stagger);
+  });
+})();
+
 /* scroll reveal */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
